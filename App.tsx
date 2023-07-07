@@ -94,7 +94,9 @@ function App(): JSX.Element {
         </View>
         <View style={Styles.container}>
           <View style={Styles.box}>
-            <Text style={Styles.boxText}>I'm in a styled Box with RN Styles</Text>
+            <Text style={Styles.boxText}>
+              I'm in a styled Box using StyleSheet Object (RN Styles)
+            </Text>
           </View>
         </View>
       </ScrollView>
