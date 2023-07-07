@@ -11,11 +11,9 @@ import {
   SafeAreaView,
   ScrollView,
   StatusBar,
-  StyleSheet,
   Text,
   useColorScheme,
   View,
-  Platform,
 } from 'react-native';
 
 import {
@@ -26,6 +24,8 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
+import Styles from './styles';
+
 type SectionProps = PropsWithChildren<{
   title: string;
 }>;
@@ -33,10 +33,10 @@ type SectionProps = PropsWithChildren<{
 function Section({children, title}: SectionProps): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
   return (
-    <View style={styles.container}>
+    <View style={Styles.container}>
       <Text
         style={[
-          styles.sectionTitle,
+          Styles.sectionTitle,
           {
             color: isDarkMode ? Colors.white : Colors.black,
           },
@@ -45,7 +45,7 @@ function Section({children, title}: SectionProps): JSX.Element {
       </Text>
       <Text
         style={[
-          styles.sectionDescription,
+          Styles.sectionDescription,
           {
             color: isDarkMode ? Colors.light : Colors.dark,
           },
@@ -78,7 +78,7 @@ function App(): JSX.Element {
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
           }}>
           <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
+            Edit <Text style={Styles.highlight}>App.tsx</Text> to change this
             screen and then come back to see your edits.
           </Section>
           <Section title="See Your Changes">
@@ -92,50 +92,14 @@ function App(): JSX.Element {
           </Section>
           <LearnMoreLinks />
         </View>
-        <View style={styles.container}>
-          <View style={styles.box}>
-            <Text style={styles.boxText}>I'm in a Box</Text>
+        <View style={Styles.container}>
+          <View style={Styles.box}>
+            <Text style={Styles.boxText}>I'm in a styled Box with RN Styles</Text>
           </View>
         </View>
       </ScrollView>
     </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: Colors.ghostwhite,
-    ...Platform.select({
-      ios: {paddingTop: 20},
-      android: {paddingTop: StatusBar.currentHeight},
-    }),
-  },
-  box: {
-    width: 100,
-    height: 100,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'lightgrey',
-  },
-  boxText: {
-    color: 'darkslategray',
-    fontWeight: 'bold',
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
 
 export default App;
