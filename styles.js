@@ -4,20 +4,26 @@ import {Platform, StyleSheet, StatusBar} from 'react-native';
 export default StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
     alignItems: 'center',
     backgroundColor: 'ghostwhite',
     ...Platform.select({
-      ios: {paddingTop: 20},
+      ios: {paddingTop: 40},
       android: {paddingTop: StatusBar.currentHeight},
     }),
   },
   box: {
-    width: 100,
     height: 100,
+    width: 100,
+    alignSelf: 'stretch',
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'lightgrey',
+    borderWidth: 1,
+    borderStyle: 'dashed',
+    borderColor: 'darkslategray',
+    margin: 10,
   },
   boxText: {
     color: 'darkslategray',

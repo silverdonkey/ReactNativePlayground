@@ -6,7 +6,7 @@
  */
 
 import React from 'react';
-import type {PropsWithChildren} from 'react';
+
 import {
   SafeAreaView,
   ScrollView,
@@ -26,35 +26,11 @@ import {
 
 import Styles from './styles';
 
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
+import Box from './Box';
 
-function Section({children, title}: SectionProps): JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={Styles.container}>
-      <Text
-        style={[
-          Styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          Styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-}
+import Section from './Section';
+
+const boxes = new Array(10).fill(null).map((v, i) => i + 1);
 
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
@@ -93,11 +69,9 @@ function App(): JSX.Element {
           <LearnMoreLinks />
         </View>
         <View style={Styles.container}>
-          <View style={Styles.box}>
-            <Text style={Styles.boxText}>
-              I'm in a styled Box using StyleSheet Object (RN Styles)
-            </Text>
-          </View>
+          {boxes.map(i => (
+            <Box key={i}>#{i}</Box>
+          ))}
         </View>
       </ScrollView>
     </SafeAreaView>
